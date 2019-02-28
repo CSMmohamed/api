@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Product\ProductCollection;
-use Symfony\component\HttpFoundation\Response;
+require '../vendor/autoload.php';
+
+use Symfony\Component\HttpFoundation\Response;
+
 class ProductController extends Controller
 {
 
@@ -113,6 +116,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response(null,Response::HTTP_NO_CONTENT);
     }
 }
